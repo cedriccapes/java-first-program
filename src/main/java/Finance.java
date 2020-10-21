@@ -10,9 +10,11 @@ public class Finance {
     public final static String SAVINGS_CALCULATOR = "savingsCalculator";
     public final static String MORTGAGE_CALCULATOR = "mortgageCalculator";
 
-    public final static Map<String, String> commandsToUsage = Map.of(BEST_LOAN_RATES, "usage: bestLoanRates",
-                SAVINGS_CALCULATOR, "usage: savingsCalculator <credits separated by ','> <debits separated by ','>",
-                MORTGAGE_CALCULATOR, "usage: mortgageCalculator <loanAmount> <termInYears> <annualRate>");
+    public final static Map<String, String> commandsToUsage = Map.of(
+            BEST_LOAN_RATES, "usage: bestLoanRates",
+            SAVINGS_CALCULATOR, "usage: savingsCalculator <credits separated by ','> <debits separated by ','>",
+            MORTGAGE_CALCULATOR, "usage: mortgageCalculator <loanAmount> <termInYears> <annualRate>"
+    );
 
 
     private static boolean validateCommandArguments(String[] args){
@@ -56,14 +58,14 @@ public class Finance {
     public static void main(String[] args){
         String command = args[0];
 
-        if(!commandsToUsage().containsKey(command)){
+        if(!commandsToUsage.containsKey(command)){
             System.out.println(command + ": command not found");
             return;
         }
 
         boolean isValidCommand = validateCommandArguments(args);
         if (!isValidCommand == true){
-            System.out.println(commandsToUsage().get(command));
+            System.out.println(commandsToUsage.get(command));
             return;
         }
 
