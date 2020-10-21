@@ -15,7 +15,7 @@ public class MortgageCalculator {
     }
 
     private int getNumberOfPayments(){
-        return 0;
+        return termInYears*12;
     }
 
     private float getMonthlyInterestRate(){
@@ -23,7 +23,7 @@ public class MortgageCalculator {
         return interestRate;
     }
 
-    public double calculateMonthlyPayment(){
+    public void calculateMonthlyPayment(){
         // M = P(r(1+r)^n/(((1+r)^n)-1)
         // monthly mortgage payment = loanAmount*(MonthlyInterestRate(1+MonthlyInterestRate)^NbrOfPayments
         //  /(((1+MonthlyInterestRate)^NbrOfPayments)-1)
@@ -33,7 +33,6 @@ public class MortgageCalculator {
         int n = getNumberOfPayments();
         double M = P * (((r * Math.pow(1 + r, n))) / ((Math.pow((1 + r), n)) - 1));
         this.monthlyPayment = M;
-        return M;
     }
 
     public String toString(){
@@ -47,7 +46,7 @@ public class MortgageCalculator {
         float annualRate = Float.parseFloat(args[2]);
 
         MortgageCalculator calculator = new MortgageCalculator(loanAmount, termInYears, annualRate);
-        double monthlyPayment = calculator.calculateMonthlyPayment();
+        monthlyPayment = calculator.calculateMonthlyPayment();
 
         System.out.println(calculator.toString());
     }
